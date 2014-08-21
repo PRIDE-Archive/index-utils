@@ -43,6 +43,8 @@
 	
     <properties>
         <archive.data.provider.api.version>2.0.5-SNAPSHOT</archive.data.provider.api.version>
+        <jmztab.version>3.0.0</jmztab.version>
+        <pride.mod.version>2.0.0-SNAPSHOT</pride.mod.version>
     </properties>
 
     <dependencies>
@@ -52,6 +54,33 @@
             <groupId>uk.ac.ebi.pride.archive</groupId>
             <artifactId>archive-data-provider-api</artifactId>
             <version>${archive.data.provider.api.version}</version>
+        </dependency>
+
+        <!-- jmzTab -->
+        <dependency>
+            <groupId>uk.ac.ebi.pride</groupId>
+            <artifactId>jmztab-modular-model</artifactId>
+            <version>${jmztab.version}</version>
+            <!-- based on mzTab specification version 1.0 RC5-->
+            <exclusions>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>uk.ac.ebi.pride</groupId>
+            <artifactId>jmztab-modular-util</artifactId>
+            <version>${jmztab.version}</version>
+            <!-- based on mzTab specification version 1.0 RC5-->
+        </dependency>
+
+        <!-- pride tools for ontology translation -->
+        <dependency>
+            <groupId>uk.ac.ebi.pride.tools</groupId>
+            <artifactId>pride-mod</artifactId>
+            <version>${pride.mod.version}</version>
         </dependency>
 
     </dependencies>
