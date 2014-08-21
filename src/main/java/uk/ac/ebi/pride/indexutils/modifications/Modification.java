@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * @author Noemi del Toro, Jose A. Dianes
+ * @author Noemi del Toro
  * @version $Id$
  */
 public class Modification implements ModificationProvider {
@@ -75,15 +75,4 @@ public class Modification implements ModificationProvider {
         this.neutralLoss = neutralLoss;
     }
 
-    public String getModificationAsString() {
-        return null;
-    }
-
-    public String getModificationNames() {
-        return null;
-    }
-
-    public String getModificationAccessions() {
-        return null;
-    }
 }
