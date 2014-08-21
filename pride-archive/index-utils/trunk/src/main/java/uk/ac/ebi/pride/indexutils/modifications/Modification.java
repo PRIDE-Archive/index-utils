@@ -2,13 +2,14 @@ package uk.ac.ebi.pride.indexutils.modifications;
 
 import uk.ac.ebi.pride.archive.dataprovider.identification.ModificationProvider;
 import uk.ac.ebi.pride.archive.dataprovider.param.CvParamProvider;
+import uk.ac.ebi.pride.indexutils.helpers.ModificationHelper;
 
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * @author Noemi del Toro
+ * @author Noemi del Toro, Jose A. Dianes
  * @version $Id$
  */
 public class Modification implements ModificationProvider {
@@ -19,6 +20,17 @@ public class Modification implements ModificationProvider {
     private Map<Integer, CvParamProvider> positionMap = new TreeMap<Integer, CvParamProvider>();
     private CvParamProvider neutralLoss;
 
+    public Modification() {
+    }
+
+    public Modification(String asString) {
+        ModificationProvider mod = ModificationHelper.convertFromString(asString);
+        this.accession = mod.getAccession();
+        this.name = mod.getName();
+        this.mainPosition = mod.getMainPosition();
+        this.positionMap = mod.getPositionMap();
+        this.neutralLoss = mod.getNeutralLoss();
+    }
 
     @Override
     public String getAccession() {
@@ -74,5 +86,10 @@ public class Modification implements ModificationProvider {
     public void setNeutralLoss(CvParamProvider neutralLoss) {
         this.neutralLoss = neutralLoss;
     }
+
+    public String getModificationAsString() {
+        return ModificationHelper.convertToString(this);
+    }
+
 
 }
