@@ -1,0 +1,113 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>uk.ac.ebi.pride</groupId>
+    <artifactId>index-utils</artifactId>
+    <packaging>jar</packaging>
+    <version>0.1.0-SNAPSHOT</version>
+    <name>index-utils</name>
+
+    <parent>
+        <groupId>uk.ac.ebi.pride.maven</groupId>
+        <artifactId>pride-base-master</artifactId>
+        <version>1.0.3</version>
+    </parent>
+	
+    <licenses>
+        <license>
+            <name>The Apache Software License 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>PRIDE Developer</name>
+            <id>pride-support@ebi.ac.uk</id>
+            <email>pride-support@ebi.ac.uk</email>
+            <organization>Proteomics Services Team, EMBL - European Bioinformatics Institute</organization>
+        </developer>
+    </developers>
+
+    <organization>
+        <name>EMBL - European Bioinformatics Institute</name>
+        <url>http://www.ebi.ac.uk</url>
+    </organization>
+
+    <scm>
+        <connection>scm:svn:https://svn.ebi.ac.uk/pride-repo/pride-archive/index-utils/trunk</connection>
+        <developerConnection>scm:svn:https://svn.ebi.ac.uk/pride-repo/pride-archive/index-utils/trunk</developerConnection>
+        <url>https://svn.ebi.ac.uk/pride-repo/pride-archive/index-utils/trunk</url>
+    </scm>
+	
+    <properties>
+        <archive.data.provider.api.version>2.0.5-SNAPSHOT</archive.data.provider.api.version>
+    </properties>
+
+    <dependencies>
+
+        <!--prider data provider API-->
+        <dependency>
+            <groupId>uk.ac.ebi.pride.archive</groupId>
+            <artifactId>archive-data-provider-api</artifactId>
+            <version>${archive.data.provider.api.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.2.1</version>
+                <configuration>
+                    <remoteTagging>true</remoteTagging>
+                    <goals>deploy</goals>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <!-- EBI repo -->
+        <repository>
+            <id>nexus-ebi-repo</id>
+            <name>The EBI internal repository</name>
+            <url>http://www.ebi.ac.uk/intact/maven/nexus/content/repositories/ebi-repo/</url>
+            <releases>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+
+        <!-- EBI SNAPSHOT repo -->
+        <repository>
+            <id>nexus-ebi-snapshot-repo</id>
+            <name>The EBI internal snapshot repository</name>
+            <url>http://www.ebi.ac.uk/intact/maven/nexus/content/repositories/ebi-repo-snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+            </snapshots>
+        </repository>
+    </repositories>
+
+</project>
