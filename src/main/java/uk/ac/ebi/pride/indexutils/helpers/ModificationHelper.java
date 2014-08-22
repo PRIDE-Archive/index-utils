@@ -8,6 +8,7 @@ import uk.ac.ebi.pride.jmztab.model.MZTabUtils;
 import uk.ac.ebi.pride.jmztab.model.Section;
 
 import uk.ac.ebi.pridemod.ModReader;
+import uk.ac.ebi.pridemod.model.PTM;
 
 import java.util.Map;
 
@@ -39,15 +40,25 @@ public class ModificationHelper {
         if (mzTabMod == null)
             return null;
 
-        //TODO: Handle the neutral loss cases
         Modification modification = new Modification();
         ModReader modReader = ModReader.getInstance();
 
-        String accession = mzTabMod.getType().name() + SPLIT_CHAR + mzTabMod.getAccession();
-        String name = modReader.getPTMbyAccession(accession).getName();
+        //TODO: Handle the neutral loss cases
+        String ptmName;
+        String accession;
+        if (mzTabMod.getType() == uk.ac.ebi.pride.jmztab.model.Modification.Type.NEUTRAL_LOSS) {
+            // neutral losses are not handled yet,
+            // they are defined by MS terms which are not supported by the ModReader
+            accession = mzTabMod.getAccession();
+            ptmName = mzTabMod.toString();
+        } else {
+            accession = mzTabMod.getType().name() + SPLIT_CHAR + mzTabMod.getAccession();
+            PTM ptm = modReader.getPTMbyAccession(accession);
+            ptmName = ptm.getName();
+        }
 
         modification.setAccession(accession);
-        modification.setName(name);
+        modification.setName(ptmName);
 
         if (mzTabMod.getPositionMap() != null && !mzTabMod.getPositionMap().isEmpty()) {
             for (Map.Entry<Integer, uk.ac.ebi.pride.jmztab.model.CVParam> integerCVParamEntry : mzTabMod.getPositionMap().entrySet()) {
