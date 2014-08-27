@@ -4,7 +4,7 @@ import uk.ac.ebi.pride.archive.dataprovider.param.CvParamProvider;
 import uk.ac.ebi.pride.jmztab.model.CVParam;
 import uk.ac.ebi.pride.jmztab.model.MZTabUtils;
 import uk.ac.ebi.pride.jmztab.model.Param;
-import uk.ac.ebi.pride.params.CvParam;
+import uk.ac.ebi.pride.indexutils.params.CvParam;
 
 
 /**
