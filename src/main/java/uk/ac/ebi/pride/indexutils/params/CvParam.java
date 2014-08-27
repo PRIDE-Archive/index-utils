@@ -1,4 +1,4 @@
-package uk.ac.ebi.pride.params;
+package uk.ac.ebi.pride.indexutils.params;
 
 import uk.ac.ebi.pride.archive.dataprovider.param.CvParamProvider;
 

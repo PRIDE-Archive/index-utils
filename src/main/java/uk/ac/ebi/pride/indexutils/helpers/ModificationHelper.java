@@ -6,11 +6,12 @@ import uk.ac.ebi.pride.indexutils.modifications.Modification;
 import uk.ac.ebi.pride.jmztab.model.CVParam;
 import uk.ac.ebi.pride.jmztab.model.MZTabUtils;
 import uk.ac.ebi.pride.jmztab.model.Section;
-
 import uk.ac.ebi.pridemod.ModReader;
 import uk.ac.ebi.pridemod.model.PTM;
 
 import java.util.Map;
+
+import static uk.ac.ebi.pride.jmztab.model.Modification.*;
 
 /**
  * User: ntoro
@@ -43,15 +44,10 @@ public class ModificationHelper {
         Modification modification = new Modification();
         ModReader modReader = ModReader.getInstance();
 
-        //TODO: Handle the neutral loss cases
-        String ptmName;
-        String accession;
-        if (mzTabMod.getType() == uk.ac.ebi.pride.jmztab.model.Modification.Type.NEUTRAL_LOSS) {
-            // neutral losses are not handled yet,
-            // they are defined by MS terms which are not supported by the ModReader
-            accession = mzTabMod.getAccession();
-            ptmName = mzTabMod.toString();
-        } else {
+        String accession = null;
+        String ptmName = null;
+
+        if (!mzTabMod.getType().equals(Type.NEUTRAL_LOSS)) {
             accession = mzTabMod.getType().name() + SPLIT_CHAR + mzTabMod.getAccession();
             PTM ptm = modReader.getPTMbyAccession(accession);
             ptmName = ptm.getName();
@@ -87,18 +83,20 @@ public class ModificationHelper {
             type = splittedAccession[0];
             accession = splittedAccession[1];
         }
+        else {
+            //If we don't have accession could be an unknown mod or a neutral loss
+            if(modification.getNeutralLoss()!= null){
+               type = "NEUTRAL_LOSS";
+            }
+        }
 
         uk.ac.ebi.pride.jmztab.model.Modification mzTabMod
                 = new uk.ac.ebi.pride.jmztab.model.Modification(
                 Section.PSM,
-                uk.ac.ebi.pride.jmztab.model.Modification.findType(type),
+                findType(type),
                 accession);
 
         mzTabMod.setNeutralLoss((CVParam) CvParamHelper.convertFromCvParamProvider(modification.getNeutralLoss()));
-
-        if (mzTabMod.getPositionMap() != null) {
-            mzTabMod.setAmbiguity(mzTabMod.getPositionMap().size() > 1);
-        }
 
         if (modification.getPositionMap() != null && !modification.getPositionMap().isEmpty()) {
             for (Map.Entry<Integer, CvParamProvider> integerCVParamEntry : modification.getPositionMap().entrySet()) {
