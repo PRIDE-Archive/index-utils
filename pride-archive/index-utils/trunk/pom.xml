@@ -36,8 +36,8 @@
     </organization>
 
     <properties>
-        <archive.data.provider.api.version>2.0.5-SNAPSHOT</archive.data.provider.api.version>
-        <jmztab.version>3.0.1-SNAPSHOT</jmztab.version>
+        <archive.data.provider.api.version>2.0.6-SNAPSHOT</archive.data.provider.api.version>
+        <jmztab.version>3.0.1</jmztab.version>
         <pride.mod.version>2.0.0-SNAPSHOT</pride.mod.version>
     </properties>
 
