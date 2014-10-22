@@ -1,5 +1,6 @@
 package uk.ac.ebi.pride.indexutils.helpers;
 
+import org.springframework.util.Assert;
 import uk.ac.ebi.pride.archive.dataprovider.identification.ModificationProvider;
 import uk.ac.ebi.pride.archive.dataprovider.param.CvParamProvider;
 import uk.ac.ebi.pride.indexutils.modifications.Modification;
@@ -50,6 +51,7 @@ public class ModificationHelper {
         if (!mzTabMod.getType().equals(Type.NEUTRAL_LOSS)) {
             accession = mzTabMod.getType().name() + SPLIT_CHAR + mzTabMod.getAccession();
             PTM ptm = modReader.getPTMbyAccession(accession);
+            Assert.notNull(ptm, "The provided modification cannot be found in the PSIMOD ontology.");
             ptmName = ptm.getName();
         }
 
