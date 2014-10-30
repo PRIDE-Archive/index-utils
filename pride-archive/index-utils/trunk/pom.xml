@@ -36,9 +36,9 @@
     </organization>
 
     <properties>
-        <archive.data.provider.api.version>2.0.6-SNAPSHOT</archive.data.provider.api.version>
+        <archive.data.provider.api.version>2.0.6</archive.data.provider.api.version>
         <jmztab.version>3.0.1</jmztab.version>
-        <pride.mod.version>2.0.0-SNAPSHOT</pride.mod.version>
+        <pride.mod.version>2.0.0</pride.mod.version>
     </properties>
 
     <build>
@@ -100,7 +100,7 @@
 
         <!-- pride tools for ontology translation -->
         <dependency>
-            <groupId>uk.ac.ebi.pride.tools</groupId>
+            <groupId>uk.ac.ebi.pride.utils</groupId>
             <artifactId>pride-mod</artifactId>
             <version>${pride.mod.version}</version>
         </dependency>
