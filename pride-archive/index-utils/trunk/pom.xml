@@ -37,7 +37,7 @@
 
     <properties>
         <archive.data.provider.api.version>2.0.6</archive.data.provider.api.version>
-        <jmztab.version>3.0.1</jmztab.version>
+        <jmztab.version>3.0.2-SNAPSHOT</jmztab.version>
         <pride.mod.version>2.0.0</pride.mod.version>
     </properties>
 
@@ -83,19 +83,13 @@
             <groupId>uk.ac.ebi.pride</groupId>
             <artifactId>jmztab-modular-model</artifactId>
             <version>${jmztab.version}</version>
-            <!-- based on mzTab specification version 1.0 RC5-->
-            <exclusions>
-                <exclusion>
-                    <groupId>log4j</groupId>
-                    <artifactId>log4j</artifactId>
-                </exclusion>
-            </exclusions>
+            <!-- based on mzTab specification version 1.0.0-->
         </dependency>
         <dependency>
             <groupId>uk.ac.ebi.pride</groupId>
             <artifactId>jmztab-modular-util</artifactId>
             <version>${jmztab.version}</version>
-            <!-- based on mzTab specification version 1.0 RC5-->
+            <!-- based on mzTab specification version 1.0.0-->
         </dependency>
 
         <!-- pride tools for ontology translation -->
@@ -110,6 +104,12 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-solr</artifactId>
             <version>${spring.data.solr.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
     </dependencies>
