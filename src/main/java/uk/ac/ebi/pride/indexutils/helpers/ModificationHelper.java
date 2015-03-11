@@ -48,11 +48,14 @@ public class ModificationHelper {
         String accession = null;
         String ptmName = null;
 
-        if (!mzTabMod.getType().equals(Type.NEUTRAL_LOSS)) {
-            accession = mzTabMod.getType().name() + SPLIT_CHAR + mzTabMod.getAccession();
-            PTM ptm = modReader.getPTMbyAccession(accession);
-            Assert.notNull(ptm, "The provided modification cannot be found in the PSIMOD ontology.");
-            ptmName = ptm.getName();
+        final Type mzTabModType = mzTabMod.getType();
+        if (!mzTabModType.equals(Type.NEUTRAL_LOSS)) {
+            accession = mzTabModType.name() + SPLIT_CHAR + mzTabMod.getAccession();
+            if(mzTabModType.equals(Type.MOD) || mzTabModType.equals(Type.UNIMOD)){
+                PTM ptm = modReader.getPTMbyAccession(accession);
+                Assert.notNull(ptm, "The provided modification cannot be found in the PSIMOD or Unimod ontology.");
+                ptmName = ptm.getName();
+            }
         }
 
         modification.setAccession(accession);
