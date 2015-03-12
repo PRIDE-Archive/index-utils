@@ -10,7 +10,7 @@
     <groupId>uk.ac.ebi.pride</groupId>
     <artifactId>index-utils</artifactId>
     <packaging>jar</packaging>
-    <version>0.1.1</version>
+    <version>0.1.2-SNAPSHOT</version>
     <name>index-utils</name>
 
     <licenses>
@@ -137,9 +137,9 @@
     </repositories>
 
     <scm>
-        <connection>scm:svn:https://svn.ebi.ac.uk/pride-repo/pride-archive/index-utils/tags/index-utils-0.1.1</connection>
-        <developerConnection>scm:svn:https://svn.ebi.ac.uk/pride-repo/pride-archive/index-utils/tags/index-utils-0.1.1</developerConnection>
-        <url>https://svn.ebi.ac.uk/pride-repo/pride-archive/index-utils/tags/index-utils-0.1.1</url>
+        <connection>scm:svn:https://svn.ebi.ac.uk/pride-repo/pride-archive/index-utils/trunk</connection>
+        <developerConnection>scm:svn:https://svn.ebi.ac.uk/pride-repo/pride-archive/index-utils/trunk</developerConnection>
+        <url>https://svn.ebi.ac.uk/pride-repo/pride-archive/index-utils/trunk</url>
     </scm>
 
 </project>
