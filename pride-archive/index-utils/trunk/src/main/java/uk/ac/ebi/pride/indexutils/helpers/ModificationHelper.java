@@ -1,6 +1,7 @@
 package uk.ac.ebi.pride.indexutils.helpers;
 
-import org.springframework.util.Assert;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import uk.ac.ebi.pride.archive.dataprovider.identification.ModificationProvider;
 import uk.ac.ebi.pride.archive.dataprovider.param.CvParamProvider;
 import uk.ac.ebi.pride.indexutils.modifications.Modification;
@@ -12,7 +13,8 @@ import uk.ac.ebi.pridemod.model.PTM;
 
 import java.util.Map;
 
-import static uk.ac.ebi.pride.jmztab.model.Modification.*;
+import static uk.ac.ebi.pride.jmztab.model.Modification.Type;
+import static uk.ac.ebi.pride.jmztab.model.Modification.findType;
 
 /**
  * User: ntoro
@@ -22,6 +24,7 @@ import static uk.ac.ebi.pride.jmztab.model.Modification.*;
 public class ModificationHelper {
 
     public static final String SPLIT_CHAR = ":";
+    private static Logger log = LoggerFactory.getLogger(ModificationHelper.class);
 
     public static ModificationProvider convertFromString(String modification) {
         uk.ac.ebi.pride.jmztab.model.Modification mzTabMod = MZTabUtils.parseModification(Section.PSM, modification);
@@ -53,7 +56,10 @@ public class ModificationHelper {
             accession = mzTabModType.name() + SPLIT_CHAR + mzTabMod.getAccession();
             if(mzTabModType.equals(Type.MOD) || mzTabModType.equals(Type.UNIMOD)){
                 PTM ptm = modReader.getPTMbyAccession(accession);
-                Assert.notNull(ptm, "The provided modification cannot be found in the PSIMOD or Unimod ontology.");
+                if(ptm == null) {
+                    log.warn("The provided modification " + accession + " cannot be found in the PSIMOD or Unimod ontology.");
+                    return null;
+                }
                 ptmName = ptm.getName();
             }
         }
