@@ -8,8 +8,8 @@ import uk.ac.ebi.pride.indexutils.modifications.Modification;
 import uk.ac.ebi.pride.jmztab.model.CVParam;
 import uk.ac.ebi.pride.jmztab.model.MZTabUtils;
 import uk.ac.ebi.pride.jmztab.model.Section;
-import uk.ac.ebi.pridemod.ModReader;
-import uk.ac.ebi.pridemod.model.PTM;
+import uk.ac.ebi.pride.utilities.pridemod.ModReader;
+import uk.ac.ebi.pride.utilities.pridemod.model.PTM;
 
 import java.util.Map;
 
