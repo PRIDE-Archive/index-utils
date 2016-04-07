@@ -10,7 +10,7 @@
     <groupId>uk.ac.ebi.pride</groupId>
     <artifactId>index-utils</artifactId>
     <packaging>jar</packaging>
-    <version>0.1.2-SNAPSHOT</version>
+    <version>0.1.3-SNAPSHOT</version>
     <name>index-utils</name>
 
     <licenses>
@@ -37,8 +37,8 @@
 
     <properties>
         <archive.data.provider.api.version>2.0.6</archive.data.provider.api.version>
-        <jmztab.version>3.0.2</jmztab.version>
-        <pride.mod.version>2.1.1-SNAPSHOT</pride.mod.version>
+        <jmztab.version>3.0.3-SNAPSHOT</jmztab.version>
+        <pride.mod.version>2.2.0-SNAPSHOT</pride.mod.version>
     </properties>
 
     <build>
