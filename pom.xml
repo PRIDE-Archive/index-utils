@@ -4,7 +4,7 @@
     <groupId>uk.ac.ebi.pride</groupId>
     <artifactId>index-utils</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
     <name>index-utils</name>
 
     <parent>
@@ -99,7 +99,7 @@
         <connection>scm:git:https://github.com/PRIDE-Archive/index-utils.git</connection>
         <developerConnection>scm:git:https://github.com/PRIDE-Archive/index-utils.git</developerConnection>
         <url>https://github.com/PRIDE-Archive/index-utils</url>
-        <tag>HEAD</tag>
+        <tag>index-utils-1.0.1</tag>
     </scm>
 
 </project>
